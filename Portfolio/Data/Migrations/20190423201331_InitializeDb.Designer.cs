@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Portfolio.Data;
 
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190423201331_InitializeDb")]
+    partial class InitializeDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,116 +184,6 @@ namespace Portfolio.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.BlogModel", b =>
-                {
-                    b.Property<int>("PostId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Post");
-
-                    b.Property<DateTime>("PostDate");
-
-                    b.Property<string>("PostDesc");
-
-                    b.Property<string>("PostImg");
-
-                    b.Property<string>("PostName");
-
-                    b.Property<string>("PostUrl1");
-
-                    b.HasKey("PostId");
-
-                    b.ToTable("BlogModel");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.EducationModel", b =>
-                {
-                    b.Property<int>("InstitutionId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Institution");
-
-                    b.Property<string>("InstitutionAccolade");
-
-                    b.Property<string>("InstitutionContributions");
-
-                    b.Property<string>("InstitutionDescription");
-
-                    b.Property<DateTime>("InstitutionEnd");
-
-                    b.Property<string>("InstitutionPhoto");
-
-                    b.Property<DateTime>("InstitutionStart");
-
-                    b.Property<string>("InstitutionUrl");
-
-                    b.Property<string>("InstitutionUrl2");
-
-                    b.HasKey("InstitutionId");
-
-                    b.ToTable("EducationModel");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.EmploymentModel", b =>
-                {
-                    b.Property<int>("EmploymentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Employment");
-
-                    b.Property<string>("EmploymentAccolade");
-
-                    b.Property<string>("EmploymentContributions");
-
-                    b.Property<string>("EmploymentDescription");
-
-                    b.Property<DateTime>("EmploymentEnd");
-
-                    b.Property<string>("EmploymentPhoto");
-
-                    b.Property<DateTime>("EmploymentStart");
-
-                    b.Property<string>("EmploymentUrl");
-
-                    b.HasKey("EmploymentId");
-
-                    b.ToTable("EmploymentModel");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.PortfolioModel", b =>
-                {
-                    b.Property<int>("ProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DataEdited");
-
-                    b.Property<string>("ProjectAccolade");
-
-                    b.Property<DateTime>("ProjectDate");
-
-                    b.Property<string>("ProjectDesc");
-
-                    b.Property<string>("ProjectImage");
-
-                    b.Property<string>("ProjectName");
-
-                    b.Property<string>("ProjectRole");
-
-                    b.Property<string>("ProjectTech");
-
-                    b.Property<string>("ProjectUrl1");
-
-                    b.Property<string>("ProjectUrl2");
-
-                    b.HasKey("ProjectId");
-
-                    b.ToTable("PortfolioModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

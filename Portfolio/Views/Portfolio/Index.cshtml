@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Portfolio.Models.PortfolioModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectTech)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectRole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEdited)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectAccolade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectUrl1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectUrl2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectTech)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectRole)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEdited)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectAccolade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectUrl1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectUrl2)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

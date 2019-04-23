@@ -1,0 +1,55 @@
+﻿@model Portfolio.Models.BlogModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BlogModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDesc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostDesc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Post)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Post)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostImg)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostImg)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostUrl1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostUrl1)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PostId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
