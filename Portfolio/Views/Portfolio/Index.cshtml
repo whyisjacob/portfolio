@@ -1,90 +1,82 @@
 ﻿@model IEnumerable<Portfolio.Models.PortfolioModel>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	string theProjectUrl2 = " ";
+	string theProjectAccolade = " ";
 }
 
-<h2>Index</h2>
+<div class="container">
+	<div class="row">
+		<section id="portfolio_item" class="col-sm-12">
+			@foreach (var item in Model)
+			{
+				theProjectUrl2 = item.ProjectUrl2;
+				theProjectAccolade = item.ProjectAccolade;
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectDesc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectTech)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectRole)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataEdited)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectAccolade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectUrl1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectUrl2)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectDesc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectTech)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectRole)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataEdited)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectAccolade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectUrl1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectUrl2)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+				<article class="content">
+					<h3>
+						@Html.DisplayFor(modelItem => item.ProjectName)
+					</h3>
+					@if (SignInManager.IsSignedIn(User))
+					{
+						@* If logged in display *@
+						<p>
+							<a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a><span> | </span>
+							<a asp-action="Details" asp-route-id="@item.ProjectId">Details</a><span> | </span>
+							<a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
+						</p>
+					}
+
+					<img src="@Html.DisplayFor(modelItem => item.ProjectImage)" alt="@Html.DisplayFor(modelItem => item.ProjectName)">
+					<p>
+						@Html.DisplayFor(modelItem => item.ProjectDesc)
+						@if (theProjectAccolade == " ")
+						{
+							//do nothing
+						}
+						else
+						{
+							<br>
+							<h4>@Html.DisplayFor(modelItem => item.ProjectAccolade)  </h4>
+						}
+						<br>
+						<strong>MY ROLE @theProjectAccolade:</strong>
+						@Html.DisplayFor(modelItem => item.ProjectRole)
+						<br><br>
+						<strong>TECH USED:</strong>
+						@Html.DisplayFor(modelItem => item.ProjectTech)<br>
+						<a href="@Html.DisplayFor(modelItem => item.ProjectUrl1)" target="_blank">View Project</a>
+						@if (theProjectUrl2 == " ")
+						{
+							//do nothing
+						}
+						else
+						{
+							<a href="@Html.DisplayFor(modelItem => item.ProjectUrl2)" target="_blank">View Project</a>
+						}
+					</p>
+
+				</article>
+			}
+		</section>
+		<div class="pulse-btn" onclick="window.location.href='about.html'">
+			<a href="about.html">More About Jake</a>
+			<div class="bg"></div>
+		</div>
+		@if (SignInManager.IsSignedIn(User))
+		{
+			@* If logged in display *@
+			<p>
+				<a asp-action="Create">Create New Portfolio Item</a>
+			</p>
+		}
+	</div>
+
+</div>
+

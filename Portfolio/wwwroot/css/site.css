@@ -1,37 +1,350 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
+﻿@import url("https://fonts.googleapis.com/css?family=Halant|Maven+Pro");
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	font-family: "Maven Pro", "avenir", Helvetica, Arial, sans-serif;
+	background-color: #f5f5f5 !important;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.brand_img {
+	margin: 0 auto;
+	text-align: center;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.content,
+.content-r {
+	background: #fff;
+	padding: 10px 20px;
+	margin-bottom: 30px;
+	min-height: 250px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+	.content > h3,
+	h3 {
+		text-transform: uppercase;
+		border-bottom: 1px solid #97c57f;
+		width: 70%;
+		letter-spacing: 2.5px;
+		margin-bottom: 20px;
+		padding-bottom: 5px;
+		color: #308b00;
+		font-weight: 800;
+		font-family: "Halant", serif;
+	}
+
+	.content-r > h3 {
+		text-transform: uppercase;
+		border-bottom: 1px solid #97c57f;
+		width: 70%;
+		letter-spacing: 2.5px;
+		margin-left: 30%;
+		margin-bottom: 20px;
+		padding-bottom: 5px;
+		color: #308b00;
+		font-weight: 800;
+		text-align: right;
+		font-family: "Halant", serif;
+	}
+
+	.content > p,
+	.content-r > p {
+		line-height: 25px;
+		letter-spacing: 0.5px;
+		font-size: 15px;
+	}
+
+		.content > p > a,
+		.content > p > a {
+			text-transform: smallcaps;
+			text-decoration: none;
+			color: #d87919;
+		}
+
+	.content > img {
+		float: left;
+		padding-right: 12px;
+		width: 150px;
+	}
+
+	.content-r > img {
+		float: right;
+		padding-left: 12px;
+	}
+
+.contact {
+	list-style: none;
+	padding: 0;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+	.contact > li > a {
+		color: #000;
+		text-decoration: none;
+	}
+
+.left_panel {
+	background: #fff;
+	padding: 10px 20px;
+	margin-bottom: 30px;
+	min-height: 250px;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+	.left_panel > h2 {
+		margin-top: 10px;
+	}
+
+.my_image {
+	margin: -10px;
+}
+
+.navbar {
+	height: 80px;
+}
+
+.navbar-header {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.nav-content {
+	position: absolute;
+	width: 100%;
+}
+
+.nav-item,
+.nav-item > a,
+.nav-item:hover {
+	text-transform: capitalize;
+	font-size: 17px;
+	letter-spacing: 1px;
+	margin: 0px 2%;
+	cursor: pointer;
+	color: #999;
+	text-decoration: none;
+}
+
+.quicklinks {
+	background-color: #fff;
+	list-style: none;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+	padding: 0;
+}
+
+	.quicklinks > li {
+		padding: 10px;
+		border-bottom: 1px solid #999;
+	}
+
+		.quicklinks > li:hover {
+			background: #f7e4d1;
+		}
+
+		.quicklinks > li > strong {
+			text-transform: uppercase;
+		}
+
+		.quicklinks > li > a {
+			color: #000;
+			text-decoration: none;
+		}
+
+.hero_img {
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	height: auto;
+	width: 100%;
+}
+
+.hero_content {
+	margin-top: 20%;
+	background-color: #f5f5f5;
+	padding: 20px 50px;
+	text-align: center;
+}
+
+.hero_me {
+	width: 150px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: -90px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	border-radius: 100px;
+	/* future proofing */
+	border: 8px solid #fff;
+}
+
+.desc {
+	text-align: center;
+	font-size: 23px;
+	letter-spacing: 1px;
+	line-height: 34px;
+	word-spacing: 1.5px;
+}
+
+.since {
+	font-variant: all-petite-caps;
+	font-style: oblique;
+	font-size: medium;
+}
+
+.hero_me_desc {
+	font-family: BioRhyme, aviner, Helvetica, Arial, sans-serif;
+	text-align: center;
+	font-size: 20px;
+	letter-spacing: 1px;
+	word-spacing: 1.5px;
+}
+
+#footer {
+	text-align: center;
+}
+
+.acct_img {
+	width: 150px;
+}
+
+#jh_modal {
+	border: 1px solid #ccc;
+	max-width: 600px;
+	position: absolute;
+	top: 15%;
+	z-index: 99999;
+	background-color: white;
+	left: 17%;
+	right: 17%;
+	-moz-box-shadow: 0 4px 30px -2px #000000;
+	-webkit-box-shadow: 0 4px 30px -2px #000000;
+	box-shadow: 0 4px 30px -2px #000000;
+	margin: 0 auto;
+}
+
+.contact_list {
+	list-style: none;
+	font-size: 20px;
+	display: inline-flex;
+	padding-left: 0;
+}
+
+	.contact_list > li {
+		margin-right: 15px;
+	}
+
+		.contact_list > li > a {
+			text-decoration: none;
+			color: #d87919;
+		}
+
+			.contact_list > li > a > i {
+				text-decoration: none;
+				color: #308b00;
+				padding-right: 5px;
+			}
+
+.pulse-btn {
+	cursor: pointer;
+	margin: 30px;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+}
+
+	.pulse-btn > a {
+		z-index: 10;
+	}
+
+	.pulse-btn a {
+		width: 200px;
+		display: block;
+		text-decoration: none;
+		color: #d87919;
+		height: 50px;
+		line-height: 50px;
+		text-transform: uppercase;
+		font-size: 17px;
+		font-family: sans-serif;
+	}
+
+	.pulse-btn .bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		outline: #999 solid 2px;
+		opacity: 0.2;
+	}
+
+	.pulse-btn .bg {
+		animation: pulse 2s infinite alternate;
+	}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1, 1);
+		opacity: 0.2;
+	}
+
+	100% {
+		transform: scale(1.1, 1.2);
+		opacity: 0.5;
+	}
+}
+
+.nav-item,
+.nav-item > a,
+.nav-item:hover {
+	text-transform: capitalize;
+	font-size: 17px;
+	letter-spacing: 1px;
+	margin: 0px 2%;
+	cursor: pointer;
+	color: #333;
+	text-decoration: none;
+}
+
+
+
+/*******
+Fix non-scrolling issue on landscape mobile devices
+*******/
+
+@media screen and (max-width: 700px) {
+	.jh_modal {
+		position: absolute;
+		top: 30%;
+		bottom: 10%;
+		left: 7%;
+		right: 7%;
+		margin: 0 auto;
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 402px) {
+	.nav-item,
+	.nav-item > a,
+	.nav-item:hover {
+		text-transform: capitalize;
+		font-size: 14px !important;
+		letter-spacing: 0px !important;
+		cursor: pointer;
+		color: #fff !important;
+		text-decoration: none;
+	}
+}
+
+@media screen and (max-width: 356px) {
+	.nav-item,
+	.nav-item > a,
+	.nav-item:hover {
+		text-transform: capitalize;
+		font-size: 13px !important;
+		letter-spacing: 0px !important;
+		cursor: pointer;
+		color: #fff !important;
+		text-decoration: none;
+	}
 }

@@ -1,75 +1,94 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Portfolio</title>
+﻿@using Microsoft.AspNetCore.Identity
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jacob Hershberger Web Developer">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="JhWebDev is the online development portfolio for Jacob Hershberger. Located in Utah Jacob is a full-stack developer and makes awesome websites for those who want one.">
+	<meta name="keywords" content="Jacob Hershberger, jacob hershberger full stack developer, jacob hershberger full-stack developer, Utah Web Developer, full-stack developer, full-stack development full stack developer, full stack development,">
+	<meta name="author" content="Jacob Hershberger - Full Stack Developer">
+	<meta charset="UTF-8">
+
+	<title>Jacob Hershberger – Full-Stack Developer</title>
+
+	<!--google analytics code-->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52800155-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-52800155-1');
+	</script>
+	<link rel="stylesheet" href="~/css/reset.css" />
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Portfolio</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
+	<nav id="nav" class="navbar">
 
-    <partial name="_CookieConsentPartial" />
+		<div class="navbar-header">
+			<div class="nav-content">
+				<a asp-area="" asp-controller="Home" asp-action="About" class="nav-item">About</a>
+				<a asp-area="" asp-controller="Portfolio" asp-action="Index" class="nav-item">Portfolio</a>
+				<a asp-area="" asp-controller="Home" asp-action="Index">
+					<img alt="brand_img" class=" brand_img" src="http://jhwebdev.com/assets/images/jh-update.png" width="80px;">
+				</a>
+				<a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item">Contact</a>
+				<a asp-area="" asp-controller="Blog" asp-action="Index" class="nav-item">Blog</a>
+			</div>
+		</div>
+	</nav>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - Portfolio</p>
-        </footer>
-    </div>
+	<partial name="_CookieConsentPartial" />
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+	@RenderBody()
+	<footer id="footer" class="footer">
+		<hr> © <span id="cp-year"></span> Jacob Hershberger All Rights reserved.<br>
+		@if (SignInManager.IsSignedIn(User))
+		{
+			<form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm">
+				<a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="btn btn-link">Account</a>
+				<button type="submit" class="btn btn-link  ">Logout</button>
+			</form>
+		}
+		else
+		{
+			@*<a asp-area="Identity" asp-page="/Account/Register">Register</a>*@
+			<br />
+			<a asp-area="Identity" asp-page="/Account/Login">Login</a>
+		}
+		<!-- |
+		<a href="#">Privacy Policy</a> |
+		<a href="#">Terms of Use</a> <br><br> -->
 
-    @RenderSection("Scripts", required: false)
+	</footer>
+
+
+	<script>
+		var date = new Date();
+		date = date.getFullYear();
+		document.getElementById("cp-year").innerHTML = date;
+
+	</script>
+
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@RenderSection("Scripts", required: false)
 </body>
 </html>
