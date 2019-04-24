@@ -33,23 +33,25 @@
 		gtag('config', 'UA-52800155-1');
 	</script>
 	<link rel="stylesheet" href="~/css/reset.css" />
-
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="~/css/site.css" />
 
+	<script src="https://use.fontawesome.com/6b50bc4b96.js"></script>
+ 
+
 </head>
 <body>
-	<nav id="nav" class="navbar">
+	<nav id="nav" class="navbar navbar-default">
 
 		<div class="navbar-header">
 			<div class="nav-content">
 				<a asp-area="" asp-controller="Home" asp-action="About" class="nav-item">About</a>
 				<a asp-area="" asp-controller="Portfolio" asp-action="Index" class="nav-item">Portfolio</a>
-				<a asp-area="" asp-controller="Home" asp-action="Index">
+				@*<a asp-area="" asp-controller="Home" asp-action="Index">*@
 					<img alt="brand_img" class=" brand_img" src="http://jhwebdev.com/assets/images/jh-update.png" width="80px;">
-				</a>
+				@*</a>*@
 				<a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item">Contact</a>
-				<a asp-area="" asp-controller="Blog" asp-action="Index" class="nav-item">Blog</a>
+				<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-item">Home</a>
 			</div>
 		</div>
 	</nav>

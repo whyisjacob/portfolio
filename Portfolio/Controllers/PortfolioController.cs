@@ -23,7 +23,7 @@ namespace Portfolio.Controllers
         // GET: Portfolio
         public async Task<IActionResult> Index()
         {
-            return View(await _context.PortfolioModel.ToListAsync());
+            return View(await _context.PortfolioModel.OrderByDescending(data => data.ProjectId).ToListAsync());
         }
 
         // GET: Portfolio/Details/5

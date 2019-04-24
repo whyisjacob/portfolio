@@ -35,30 +35,39 @@
 
 					<img src="@Html.DisplayFor(modelItem => item.ProjectImage)" alt="@Html.DisplayFor(modelItem => item.ProjectName)">
 					<p>
+
 						@Html.DisplayFor(modelItem => item.ProjectDesc)
-						@if (theProjectAccolade == " ")
-						{
-							//do nothing
-						}
-						else
-						{
-							<br>
-							<h4>@Html.DisplayFor(modelItem => item.ProjectAccolade)  </h4>
-						}
 						<br>
-						<strong>MY ROLE @theProjectAccolade:</strong>
+
+						@if (theProjectAccolade != null)
+						{
+							<br />
+							<strong> @Html.DisplayFor(modelItem => item.ProjectAccolade) </strong>
+							<br>
+						}
+						<br />
+						<strong>MY ROLE:</strong>
 						@Html.DisplayFor(modelItem => item.ProjectRole)
 						<br><br>
 						<strong>TECH USED:</strong>
-						@Html.DisplayFor(modelItem => item.ProjectTech)<br>
-						<a href="@Html.DisplayFor(modelItem => item.ProjectUrl1)" target="_blank">View Project</a>
-						@if (theProjectUrl2 == " ")
+						@Html.DisplayFor(modelItem => item.ProjectTech)
+						<br>
+						@if (theProjectUrl2 == null)
 						{
-							//do nothing
+							@if (item.ProjectUrl1 == null)
+							{
+								//do not display
+							}
+							else
+							{
+								<a href="@Html.DisplayFor(modelItem => item.ProjectUrl1)" target="_blank">View Project</a>
+							}
 						}
 						else
 						{
-							<a href="@Html.DisplayFor(modelItem => item.ProjectUrl2)" target="_blank">View Project</a>
+							<a href="@Html.DisplayFor(modelItem => item.ProjectUrl1)" target="_blank">View Before</a>
+
+							<a href="@Html.DisplayFor(modelItem => item.ProjectUrl2)" target="_blank">View After</a>
 						}
 					</p>
 

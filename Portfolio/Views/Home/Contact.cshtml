@@ -1,17 +1,103 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+	ViewData["Title"] = "Contact";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+	(function () {
+		emailjs.init("user_4c8PBUV0eppTQwYQCBweF");
+	})();
+</script>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class=" container">
+	<div class="row">
+		<section class="col-sm-12">
+			<article class="content">
+				<h3>
+					Contact Jake
+				</h3>
+				<p>
+					Feel free to connect with me at the following sites:
+					<ul class="contact_list">
+						<li>
+							<a href="https://github.com/whyisjacob" target="_blank">
+								<i class="fa fa-github-square" aria-hidden="true"></i>
+								GitHub
+							</a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/in/jacobhershberger/" target="_blank">
+								<i class="fa fa-linkedin-square"
+								   aria-hidden="true"></i> LinkedIn
+							</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/jhwebdevguy" target="_blank">
+								<i class="fa fa-twitter-square"
+								   aria-hidden="true"></i> Twitter
+							</a>
+						</li>
+						<!-- <li><a href="https://fb.me/jhwebdev" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a></li> -->
+					</ul>
+					<br>
+					<br> Or please fill out the form below.
+					<br>
+					<br>
+					<form id="myform">
+						<label>Your Email</label><br>
+						<input type="email" name="reply_to" class="form-control" value="" required /><br>
+						<label>Your Name</label><br>
+						<input type="text" name="from_name" class="form-control" value="" required /><br>
+						<span class="hidden">
+							<input type="text" name="to_name" class="form-control" value="Jake" /><br>
+						</span>
+						<label>Message</label> <br>
+						<textarea name="message_html" id="" cols="30" rows="10" class="form-control" required></textarea>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+						<script src="https://www.google.com/recaptcha/api.js"></script>
+						<!-- <div class="g-recaptcha" data-sitekey="6LcRYzoUAAAAAAc7a_zo_jj1FswpcgVitcIisB1H"></div> -->
+
+						<br><br>
+						<button class="btn btn-success">
+							Send Message
+						</button>
+					</form>
+
+					<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+					<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+					<script type="text/javascript">
+						(function () {
+							emailjs.init("user_4c8PBUV0eppTQwYQCBweF");
+						})();
+					</script>
+				</p>
+			</article>
+		</section>
+	</div>
+</div>
+<script>
+	var myform = $("form#myform");
+	myform.submit(function (event) {
+		event.preventDefault();
+
+		var params = myform.serializeArray().reduce(function (obj, item) {
+			obj[item.name] = item.value;
+			return obj;
+		}, {});
+
+		// Change to your service ID, or keep using the default service
+		var service_id = "default_service";
+
+		var template_id = "jhwebdev_contact";
+		myform.find("button").text("Sending...");
+		emailjs.send(service_id, template_id, params)
+			.then(function () {
+				alert("Sent!");
+				myform.find("button").text("Send");
+			}, function (err) {
+				alert("Send email failed! " + JSON.stringify(err));
+				myform.find("button").text("Send");
+			});
+		return false;
+	});
+</script>
