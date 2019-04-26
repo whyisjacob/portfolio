@@ -48,7 +48,7 @@
 				<a asp-area="" asp-controller="Home" asp-action="About" class="nav-item">About</a>
 				<a asp-area="" asp-controller="Portfolio" asp-action="Index" class="nav-item">Portfolio</a>
 				@*<a asp-area="" asp-controller="Home" asp-action="Index">*@
-					<img alt="brand_img" class=" brand_img" src="http://jhwebdev.com/assets/images/jh-update.png" width="80px;">
+					<img alt="brand_img" class=" brand_img" src="~/images/jh-update.png" width="80px;">
 				@*</a>*@
 				<a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item">Contact</a>
 				<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-item">Home</a>
@@ -56,9 +56,10 @@
 		</div>
 	</nav>
 
-	<partial name="_CookieConsentPartial" />
+	<div id="homeContainer" class="container">
+		@RenderBody()
 
-	@RenderBody()
+	</div>
 	<footer id="footer" class="footer">
 		<hr> © <span id="cp-year"></span> Jacob Hershberger All Rights reserved.<br>
 		@if (SignInManager.IsSignedIn(User))

@@ -10,6 +10,11 @@ body {
 	text-align: center;
 }
 
+/**About Button color Override*/
+a.btn.btn-success {
+	color: white;
+}
+
 .content,
 .content-r {
 	background: #fff;
@@ -292,19 +297,6 @@ body {
 		opacity: 0.5;
 	}
 }
-
-.nav-item,
-.nav-item > a,
-.nav-item:hover {
-	text-transform: capitalize;
-	font-size: 17px;
-	letter-spacing: 1px;
-	margin: 0px 2%;
-	cursor: pointer;
-	color: #333;
-	text-decoration: none;
-}
-
 
 
 /*******
